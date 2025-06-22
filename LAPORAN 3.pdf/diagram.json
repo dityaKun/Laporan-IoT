@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -278.9, "left": 52.76, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -306.4,
+      "left": -89.47,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r5",
+      "top": -274.74,
+      "left": -44.52,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -258.9,
+      "left": 244.2,
+      "attrs": { "temperature": "24.2", "humidity": "52.5" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -435.2,
+      "left": -4,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "led1:A", "r5:1", "red", [ "v0" ] ],
+    [ "r5:2", "esp:D26", "red", [ "v1.2", "h17.93", "v81.46" ] ],
+    [ "dht1:VCC", "esp:VIN", "red", [ "v87.6", "h-228.22", "v-54.65" ] ],
+    [ "dht1:GND", "esp:GND.1", "black", [ "v76.8", "h-109.48", "v-62.7" ] ],
+    [ "dht1:SDA", "esp:D15", "green", [ "v26.39", "h-81.44", "v-19.67" ] ],
+    [ "led1:C", "esp:GND.2", "black", [ "v0" ] ],
+    [ "lcd1:GND", "esp:GND.2", "yellow", [ "h-86.4", "v273.3" ] ],
+    [ "lcd1:VCC", "esp:VIN", "magenta", [ "h-105.6", "v273.3" ] ],
+    [ "lcd1:SDA", "esp:D21", "green", [ "h-9.6", "v96.2", "h192", "v72" ] ],
+    [ "esp:D22", "lcd1:SCL", "green", [ "h18.74", "v-33.5", "h-191.08", "v-96.3" ] ]
+  ],
+  "dependencies": {}
+}
